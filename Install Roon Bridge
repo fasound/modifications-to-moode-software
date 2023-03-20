@@ -1,0 +1,4 @@
+curl -O https://download.roonlabs.net/builds/roonbridge-installer-linuxarmv8.sh
+chmod +x roonbridge-installer-linuxarmv8.sh
+sudo ./roonbridge-installer-linuxarmv8.sh
+sudo reboot
