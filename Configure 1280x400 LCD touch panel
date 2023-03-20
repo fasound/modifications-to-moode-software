@@ -1,0 +1,49 @@
+# edit /boot/config.txt
+sudo nano /boot/config.txt, and add folowing lines:
+hdmi_group=2
+hdmi_mode=87
+hdmi_force_mode=1
+hdmi_drive=1
+config_hdmi_boost=4
+hdmi_ignore_edid=0xa5000080
+hdmi_timings=400 0 100 10 140 1280 10 20 20 2 0 0 0 60 0 43000000 3
+display_rotate=3
+
+# create and edit the touch panel calibration parameters file
+sudo apt-get install xserver-xorg-input-libinput
+sudo nano /etc/X11/xorg.conf.d/40-libinput.conf, and add following lines:
+Section "InputClass"
+        Identifier "libinput pointer catchall"
+        MatchIsPointer "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+EndSection
+
+Section "InputClass"
+        Identifier "libinput keyboard catchall"
+        MatchIsKeyboard "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+EndSection
+
+Section "InputClass"
+        Identifier "libinput touchpad catchall"
+        MatchIsTouchpad "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+EndSection
+
+Section "InputClass"
+        Identifier "libinput touchscreen catchall"
+        MatchIsTouchscreen "on"
+        Option "CalibrationMatrix" "0 -1 1 1 0 0 0 0 1"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+EndSection
+
+Section "InputClass"
+        Identifier "libinput tablet catchall"
+        MatchIsTablet "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+EndSection
