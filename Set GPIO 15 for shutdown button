@@ -1,0 +1,6 @@
+In moode software click [m] --> [Configure] --> [System]
+Scoll-down to [Local Services] session
+[GPIO buttons] --> [ON] --> [SET]
+Click [EDIT] to enter [GPIO Control] settings
+[Button 1] --> [ON] --> Pin 15 --> Cmd sudo, poweoff
+[SAVE]
